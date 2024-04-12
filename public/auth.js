@@ -1,44 +1,38 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
-import { 
-  getAuth, 
-  signOut, 
-  signInAnonymously, 
-  setPersistence, 
-  browserLocalPersistence, 
-  onAuthStateChanged 
-} from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
-import firebaseConfig from "./firebaseConfig.js";
+      import { 
+        getAuth, 
+        createUserWithEmailAndPassword,
+        signOut, 
+        signInAnonymously, 
+        setPersistence, 
+        browserLocalPersistence, 
+        onAuthStateChanged 
+      } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+      import firebaseConfig from "./firebaseConfig.js";
+
+      const app = initializeApp(firebaseConfig);
+
+      const auth = getAuth();
+
+      signUpBtn.addEventListener('click', (e) =>{
+
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed up 
+                const user = userCredential.user;
+                // Add redirect here???
+                alert('User created!');
+
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            
+            alert(errorMessage);
+        });
 
 
-const app = initializeApp(firebaseConfig);
-
-const auth = getAuth();
-
-function setAuthListeners(onLogin, onLogout){
-  onAuthStateChanged(auth, user => {
-    if (user) {
-      onLogin();
-    } else {
-      onLogout();
-    }
-  });
-}
-
-async function signIn(){
-  try{
-    await setPersistence(auth, browserLocalPersistence);
-    const user = await signInAnonymously(auth);
-  }catch(e){
-    console.error(e);
-  }
-}
-
-async function logout() {
-  try {
-    await signOut(auth);
-  } catch (error) {
-    console.error('Error signing out', error);
-  }
-}
-
-export {auth, setAuthListeners, signIn, logout};
+      });
