@@ -2,6 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/fireba
       import { 
         getAuth, 
         createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
         signOut, 
         signInAnonymously, 
         setPersistence, 
@@ -34,5 +35,24 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/fireba
             alert(errorMessage);
         });
 
+
+      });
+
+      signInBtn.addEventListener('click', (e) =>{
+
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value
+
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            // ...
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert(errorMessage);
+          });
 
       });
