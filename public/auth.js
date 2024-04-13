@@ -3,11 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/fireba
         getAuth, 
         createUserWithEmailAndPassword,
         signInWithEmailAndPassword,
-        signOut, 
-        signInAnonymously, 
-        setPersistence, 
-        browserLocalPersistence, 
-        onAuthStateChanged 
+        signOut
       } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
       import firebaseConfig from "./firebaseConfig.js";
 
@@ -26,7 +22,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/fireba
                 const user = userCredential.user;
                 // Add redirect here???
                 alert('User created!');
-
+                window.location.assign("/home.html");
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -41,18 +37,34 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/fireba
       signInBtn.addEventListener('click', (e) =>{
 
         var email = document.getElementById('email').value;
-        var password = document.getElementById('password').value
+        var password = document.getElementById('password').value;
 
         signInWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
             // ...
+            alert('Successful sign in!');
+            window.location.assign("/home.html");
           })
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             alert(errorMessage);
           });
+
+      });
+
+      logOutBtn.addEventListener('click', (e) =>{
+
+        signOut(auth).then(() => {
+          // Sign-out successful.
+          alert('Successful sign out!');
+          window.location.assign("/");
+        }).catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          alert(errorMessage);
+        });
 
       });
