@@ -153,11 +153,10 @@
 
     <nav>
       <img class="logo" src="https://i.postimg.cc/tJRkvbks/Foodie-Finds-01.jpg" width="150" />
-      <a href="#" class="brand-logo">Home <span id="user"></span></a>
       <ul class="nav-bar">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#recipes">Recipes</a></li>
-        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#home" style="color: black;">Home</a></li>
+        <li><a href="#recipes" style="color: black;">Recipes</a></li>
+        <li><a href="#contact" style="color: black;">Contact Us</a></li>
         <li>
           <button class="btn waves-effect waves-light" id="logoutBtn" style="display: none">
             Logout
@@ -244,14 +243,12 @@
 
   function setLoggedInUI(){
           M.toast({html: 'Logged In!'})
-          document.querySelector('#user').innerHTML = `Signed in Anonymously`;
           document.querySelector('#loginBtn').style.display = 'none';
           document.querySelector('#logoutBtn').style.display = 'inline-block';
       }
 
       function setLoggedOutUI(){
           M.toast({html: 'Logged Out!'})
-          document.querySelector('#user').innerHTML = '';
           document.querySelector('#loginBtn').style.display = 'inline-block';
           document.querySelector('#logoutBtn').style.display = 'none';
       }
