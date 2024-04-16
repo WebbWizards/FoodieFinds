@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Foodie Finds</title>
+   <link rel="icon" href= "https://i.postimg.cc/c40x0DKv/logo-03.png" type="image/x-icon">
   <style>
     
 
@@ -28,12 +29,12 @@
       padding: 0;
     }
 .logo {
-
       float:left;
-      padding-right: 50%;
+      padding-right: 40%;
+      size: 100%;
+      
     }
-    header img {}
-
+      
     nav {
       display: flex;
       justify-content: right;
@@ -55,12 +56,20 @@
       padding: 20px;
       margin: 20px;
       border: 1px solid #ddd;
+      padding-top: 5px;
     }
 
     .search-section {
-      background-image: url('https://i.postimg.cc/N0WxjwBn/backsearch-03.jpg');
-      color: white;
+      background-image: url('https://i.postimg.cc/jdR6zX7N/background-02-02.jpg');
+      background-repeat: no-repeat;
+      background-size:cover;
+      color: #232323;
       text-align: center;
+      font-family: 'Times New Roman', Times, serif;
+      width: auto;
+      height: 500px;
+      margin: 0;
+      object-fit: cover;
     }
 
     input[type="text"] {
@@ -72,7 +81,7 @@
 
     input[type="submit"] {
       padding: 8px 20px;
-      background-color: deeppink;
+      background-color: #b70000;
       color: #fff;
       border: none;
       cursor: pointer;
@@ -84,17 +93,16 @@
     }
 
    
-    .homie {
+    .home {
         max-width: 1200px;
         margin: 20px auto;
         padding: 20px;
         border-radius: 8px;
-      background-color: #f0f0f0;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
+      
+          }
 
     table {
-      background-color: #f0f0f0;
+      
         width: 100%;
         border-collapse: collapse;
         margin-top: 20px;
@@ -115,7 +123,7 @@
     }
 
     footer {
-        background-color: #333;
+        background-color: #b70000;
         color: #fff;
         padding: 20px;
         text-align: center;
@@ -142,18 +150,26 @@
         #recipe-section ul li {
             margin-bottom: 5px;
         }
+
+    #contact{
+      background-image: url('https://i.postimg.cc/DzZtPw5T/back-02.jpg');
+      background-repeat: no-repeat;
+      background-size:cover;
+      margin: 0;
+      object-fit: cover;
+    }
+    
   </style>
 </head>
 
 <body>
+
   <header>
-
-
-
-
     <nav>
-      <img class="logo" src="https://i.postimg.cc/tJRkvbks/Foodie-Finds-01.jpg" width="150" />
+      
       <ul class="nav-bar">
+        <li><img class="logo" src="https://i.postimg.cc/tJRkvbks/Foodie-Finds-01.jpg" style="width: 125px; height: 60px;" /></li>
+        <li></li>
         <li><a href="#home" style="color: black;">Home</a></li>
         <li><a href="#recipes" style="color: black;">Recipes</a></li>
         <li><a href="#contact" style="color: black;">Contact Us</a></li>
@@ -173,13 +189,16 @@
 
 
   <section class="search-section">
-    <h2 style="font-size: 60px;">Time to Search</h2>
+    <h2 style="font-size: 60px; ">Time to Search</h2>
+    <p style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Discover endless culinary possibilities with our comprehensive </p>
+    <p style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">food recipe database</p>
     <form onsubmit="getMealDetails()">
       <input id = "mealIdInput" type="text" placeholder="Search...">
       <input type="submit" value="Search">
     </form>
   </section>
 
+  
   <section id="home" class="homie">
     <h2>Catalog</h2>
     <table id="categoriesTable">
@@ -195,9 +214,9 @@
     </table>
   </section>
 
+  
   <section id="recipes">
-    <h2>Recipes</h2>
-    <p>This section displays the recipes for the selected category.</p>
+    <h2 style="font-size: 45px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Recipes</h2>
     <table id="itemsTable">
       <thead>
         <tr>
@@ -210,10 +229,10 @@
       </tbody>
     </table>
   </section>
-  <section id = "mealDetails">
+  
+  <section id = "mealDetails"> </section>
 
-  </section>
-
+  
   <div id="recipe-section">
         <h2>Recipe and Ingredients</h2>
         <div id="recipe-content"></div>
@@ -222,7 +241,7 @@
 
  
   <section id="contact">
-  <h2>Contact Us</h2>
+  <h2 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 30PX;">Contact Us</h2>
   <p>Have questions or feedback? Reach out to us!</p>
   <form action="#" method="post">
     <label for="name">Name:</label><br>
@@ -234,7 +253,6 @@
     <input type="submit" value="Submit">
   </form>
 </section>
-
 <script type="module">
   import { signIn, logout, auth, setAuthListeners } from './auth.js';
 
@@ -259,6 +277,8 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script> M.AutoInit(); </script>
+
+
   <script>
         function fetchRecipe(recipeId) {
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`)
